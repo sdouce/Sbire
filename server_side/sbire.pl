@@ -24,7 +24,7 @@ my $Version= 'Version 0.9.30';
 #           0.9.28 : Handle disk full situation
 #           0.9.29 : Fixed local info with relative filename
 #           0.9.30 : Uploaded files now try to keep the same permissions on Unix
-#
+#           0.9.31 : Accept  powershell  file for .ps1  
 # Usage :
 #
 #    sbire.pl <CFG>
@@ -499,7 +499,7 @@ sub download {
 sub info {
  	my ($name) = @_;
 	$name='*' unless defined $name;
-	my $PATH = $name=~/\d$/ ? $ARCHIVEDIR : $name=~/^\// ? '' : $BASEDIR;
+	my $PATH = $name=~/\.\d$/ ? $ARCHIVEDIR : $name=~/^\// ? '' : $BASEDIR;
 	my $plugin = $name;
 	$plugin = "$PATH/$name" if $PATH;
 	$plugin=$PUBLIC_KEY if ($name eq 'PUBLIC_KEY');
